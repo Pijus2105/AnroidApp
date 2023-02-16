@@ -9,6 +9,8 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -16,17 +18,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class AppiumTest {
 	
 	public AppiumDriver<MobileElement> driver;
 	public AppiumDriverLocalService service;
-@Test
-
-
-	public void test() throws MalformedURLException, InterruptedException {
-	//AppiumServiceBuilder builder = new AppiumServiceBuilder();
+	
+@BeforeClass
+	public void util() throws MalformedURLException, InterruptedException {
+	
+	Map<String, String> env = new HashMap<String, String>(System.getenv());
+	env.put("ANROID_HOME", "C:\\Users\\Elphill\\AppData\\Local\\Android\\Sdk");
+	env.put("JAVA_HOME", "C:\\Program Files\\Java\\jdk-17.0.5");
 	
 	long startupTimeout = 30; // in seconds
      service = new AppiumServiceBuilder()
@@ -48,14 +54,18 @@ public class AppiumTest {
         URL appiumServerUrl = new URL("http://127.0.0.1:4723/wd/hub");
         driver = new AndroidDriver<>(appiumServerUrl, caps);
         
-        Thread.sleep(startupTimeout);
         
-       driver.findElement(MobileBy.AccessibilityId("OS")).click();
+
+
        
-
-
-       //driver.quit();
-       service.stop();
-       System.out.println("Appium server stopped");
     }
+
+       @AfterClass
+       public void tearDown() {
+    	 driver.quit();
+           service.stop();
+           System.out.println("Appium server stopped");
+    	   
+	
+     }
 }
