@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.appium.com.qa.appium.AppiumTest">
+      <class name="com.qa.appium.com.qa.appium.ViewText">
         <methods>
-          <include name="test"/>
+          <include name="tearDown"/>
+          <include name="util"/>
+          <include name="textClass"/>
         </methods>
-      </class> <!-- com.qa.appium.com.qa.appium.AppiumTest -->
+      </class> <!-- com.qa.appium.com.qa.appium.ViewText -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

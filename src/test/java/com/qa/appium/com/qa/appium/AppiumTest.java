@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 public class AppiumTest {
 	
-	public AppiumDriver<MobileElement> driver;
+	public AndroidDriver<MobileElement> driver;
 	public AppiumDriverLocalService service;
 	
 @BeforeClass
@@ -62,9 +62,9 @@ public class AppiumTest {
 
        @AfterClass
        public void tearDown() {
-    	 driver.quit();
-           service.stop();
-           System.out.println("Appium server stopped");
+    	// driver.quit();
+          // service.stop();
+          // System.out.println("Appium server stopped");
     	   
 	
      }
