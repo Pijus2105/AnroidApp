@@ -8,10 +8,15 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import com.google.common.collect.ImmutableMap;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -24,7 +29,8 @@ import java.util.concurrent.TimeUnit;
 
 public class AppiumTest {
 	
-	public AndroidDriver<MobileElement> driver;
+
+    public AndroidDriver<MobileElement> driver;
 	public AppiumDriverLocalService service;
 	
 @BeforeClass
@@ -48,8 +54,9 @@ public class AppiumTest {
         caps.setCapability("platformVersion", "7.0");
         caps.setCapability("deviceName", "emulator-5554");
        
-        caps.setCapability("app", "C:\\Users\\Elphill\\eclipse-workspace\\com.qa.appium\\src\\test\\java\\resources\\ApiDemos-debug.apk");
-        
+        //caps.setCapability("app", "C:\\Users\\Elphill\\eclipse-workspace\\com.qa.appium\\src\\test\\java\\resources\\ApiDemos-debug.apk");
+        caps.setCapability("app", "C:\\Users\\Elphill\\eclipse-workspace\\com.qa.appium\\src\\test\\java\\resources\\General-Store.apk");
+
 
         URL appiumServerUrl = new URL("http://127.0.0.1:4723/wd/hub");
         driver = new AndroidDriver<>(appiumServerUrl, caps);
@@ -59,6 +66,8 @@ public class AppiumTest {
 
        
     }
+
+
 
        @AfterClass
        public void tearDown() {
