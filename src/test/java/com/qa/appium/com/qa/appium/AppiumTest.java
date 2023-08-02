@@ -49,6 +49,7 @@ public class AppiumTest {
             .build();
              service.start();
               System.out.println("Appium server started");
+              
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName", "Android");
         caps.setCapability("platformVersion", "7.0");
@@ -56,7 +57,7 @@ public class AppiumTest {
        
         //caps.setCapability("app", "C:\\Users\\Elphill\\eclipse-workspace\\com.qa.appium\\src\\test\\java\\resources\\ApiDemos-debug.apk");
         caps.setCapability("app", "C:\\Users\\Elphill\\eclipse-workspace\\com.qa.appium\\src\\test\\java\\resources\\General-Store.apk");
-
+        caps.setBrowserName("C:\\chromedriver_1.exe");
 
         URL appiumServerUrl = new URL("http://127.0.0.1:4723/wd/hub");
         driver = new AndroidDriver<>(appiumServerUrl, caps);
